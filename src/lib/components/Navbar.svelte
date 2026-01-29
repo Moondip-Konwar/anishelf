@@ -1,4 +1,4 @@
-<nav class="fixed h-15 w-full bg-surface flex flex-row items-center">
+<nav class="h-15 w-full bg-surface flex flex-row items-center">
   <!-- Menu Button  -->
   <span class="nav-item material-symbols-outlined text-primary-text">
     menu
