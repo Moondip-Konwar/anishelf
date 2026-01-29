@@ -12,5 +12,5 @@
 </script>
 
 {#if trending_animes}
-  <BannerCarousel animes={trending_animes} />
+  <BannerCarousel initial_animes={trending_animes} />
 {/if}

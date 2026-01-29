@@ -1,65 +1,52 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
   import type { Anime } from "$lib/api";
-  function shuffleArray<T>(array: T[]): T[] {
-    let currentIndex = array.length,
-      randomIndex;
+  import { shuffleArray } from "$lib/utils";
+  import { truncate } from "$lib/utils";
 
-    // While there remain elements to shuffle.
-    while (currentIndex !== 0) {
-      // Pick a remaining element.
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
+  const BANNER_NEXT_ANIME_DELAY = 3000;
 
-      // And swap it with the current element using array destructuring.
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex],
-        array[currentIndex],
-      ];
-    }
-
-    return array;
-  }
-  // 1. Props using the $props rune
+  // Get props
   interface Props {
-    animes: Anime[];
+    initial_animes: Anime[];
   }
-  let { animes }: Props = $props();
-  animes = shuffleArray(animes);
+  let { initial_animes }: Props = $props();
 
+  // Setup data
+  let animes = $derived(shuffleArray(initial_animes));
   let index = $state(0);
   let banners = $derived(animes.filter((a) => a.bannerImage));
   let intervals: ReturnType<typeof setInterval>[] = [];
-
-  // Current anime helper for cleaner template code
   let currentAnime = $derived(banners[index]);
 
-  const truncate = (text: string, len = 305) =>
-    text.length > len ? text.slice(0, len) + "…" : text;
-
+  // Carousel next anime
   function next() {
     index = (index + 1) % banners.length;
   }
 
+  // Carousel previous anime
   function prev() {
     index = (index - 1 + banners.length) % banners.length;
   }
 
+  // Timer reset necessary
   function prev_clicked() {
     clearInterval(intervals.pop());
-    intervals = [];
+    intervals.push(setInterval(next, BANNER_NEXT_ANIME_DELAY));
     prev();
   }
 
+  // Timer reset necessary
   function next_clicked() {
     clearInterval(intervals.pop());
-    intervals = [];
+    intervals.push(setInterval(next, BANNER_NEXT_ANIME_DELAY));
     next();
   }
-  // 4. Lifecycle logic inside $effect
+
   $effect(() => {
+    // Auto carousel next
     if (banners.length === 0) return;
-    intervals.push(setInterval(next, 10000));
+    intervals.push(setInterval(next, BANNER_NEXT_ANIME_DELAY));
     return () => clearInterval(intervals.pop());
   });
 </script>
