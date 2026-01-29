@@ -12,11 +12,13 @@
 </script>
 
 {#if anime}
-  <img
-    src={anime.bannerImage}
-    alt={anime.title.romaji}
-    class="w-full h-64 object-cover"
-  />
+  {#if anime.bannerImage}
+    <img
+      src={anime.bannerImage}
+      alt={anime.title.romaji}
+      class="w-full h-64 object-cover"
+    />
+  {/if}
 
   <div class="p-6 md:p-16 flex flex-col md:flex-row gap-8">
     <div class="flex-1 space-y-4">
