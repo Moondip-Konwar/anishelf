@@ -15,6 +15,48 @@ export type Anime = {
   averageScore: number | null;
 };
 
+export async function fetch_anime_by_id(id: number): Promise<Anime> {
+  const query = `
+    query ($id: Int) {
+      Media (id: $id, type: ANIME) {
+        id
+        title {
+          english
+          romaji
+        }
+        description
+        genres
+        episodes
+        bannerImage
+        coverImage {
+          large
+        }
+        averageScore
+      }
+    }
+  `;
+
+  const response = await fetch("https://graphql.anilist.co", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      query,
+      variables: { id },
+    }),
+  });
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    throw new Error(result.errors?.[0]?.message || "Failed to fetch anime");
+  }
+
+  return result.data.Media;
+}
+
 export async function fetch_trending_animes(
   page = 1,
   perPage = 20,

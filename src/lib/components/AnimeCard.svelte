@@ -9,12 +9,12 @@
 </script>
 
 {#if anime}
-  <div class="anime-card">
+  <a href="/{anime.id}" class="anime-card">
     <img src={anime.coverImage.large} alt={anime.title.english} />
 
     <p class="text-primary-text font-bold">{anime.title.english}</p>
     <p class="text-secondary-text">{anime.episodes} Episodes</p>
-  </div>
+  </a>
 {/if}
 
 <style>
