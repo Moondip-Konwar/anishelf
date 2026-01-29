@@ -5,10 +5,10 @@
   </span>
 
   <!-- Title  -->
-  <div class="nav-item text-primary flex flex-row items-center gap-2">
+  <a href="/" class="nav-item text-primary flex flex-row items-center gap-2">
     <span class="material-symbols-outlined"> circle_circle </span>
     <span class="text-xl font-black">Anishelf</span>
-  </div>
+  </a>
 
   <!-- Nav Buttons: Desktop -->
   <div class="flex flex-row items-center text-secondary-text">
