@@ -27,9 +27,9 @@
   let { animes }: Props = $props();
   animes = shuffleArray(animes);
 
-  // 2. Reactive state and derived values
   let index = $state(0);
   let banners = $derived(animes.filter((a) => a.bannerImage));
+  let intervals: ReturnType<typeof setInterval>[] = [];
 
   // Current anime helper for cleaner template code
   let currentAnime = $derived(banners[index]);
@@ -37,7 +37,6 @@
   const truncate = (text: string, len = 305) =>
     text.length > len ? text.slice(0, len) + "…" : text;
 
-  // 3. Carousel Logic
   function next() {
     index = (index + 1) % banners.length;
   }
@@ -46,11 +45,22 @@
     index = (index - 1 + banners.length) % banners.length;
   }
 
+  function prev_clicked() {
+    clearInterval(intervals.pop());
+    intervals = [];
+    prev();
+  }
+
+  function next_clicked() {
+    clearInterval(intervals.pop());
+    intervals = [];
+    next();
+  }
   // 4. Lifecycle logic inside $effect
   $effect(() => {
     if (banners.length === 0) return;
-    const interval = setInterval(next, 10000);
-    return () => clearInterval(interval);
+    intervals.push(setInterval(next, 10000));
+    return () => clearInterval(intervals.pop());
   });
 </script>
 
@@ -68,11 +78,11 @@
       <div class="banner-overlay"></div>
     </div>
 
-    <button class="nav left" onclick={prev} aria-label="Previous">
+    <button class="nav left" onclick={prev_clicked} aria-label="Previous">
       <span class="material-symbols-outlined">chevron_left</span>
     </button>
 
-    <button class="nav right" onclick={next} aria-label="Next">
+    <button class="nav right" onclick={next_clicked} aria-label="Next">
       <span class="material-symbols-outlined">chevron_right</span>
     </button>
 
