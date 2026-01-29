@@ -1,1 +1,15 @@
-@import 'tailwindcss';
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #ff640a;
+  --color-surface: #272727;
+  --color-background: #000000;
+  --color-primary-text: #bbbbbb;
+  --color-secondary-text: #a8a8a8;
+}
+
+body {
+  font-family: "Google Sans";
+  background-color: var(--color-background);
+}
