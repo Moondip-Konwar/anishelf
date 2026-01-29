@@ -4,7 +4,7 @@
   import { shuffleArray } from "$lib/utils";
   import { truncate } from "$lib/utils";
 
-  const BANNER_NEXT_ANIME_DELAY = 3000;
+  const BANNER_NEXT_ANIME_DELAY = 10000;
 
   // Get props
   interface Props {
