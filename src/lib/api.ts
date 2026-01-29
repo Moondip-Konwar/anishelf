@@ -17,7 +17,7 @@ export type Anime = {
 
 export async function fetch_trending_animes(
   page = 1,
-  perPage = 10,
+  perPage = 20,
 ): Promise<Anime[]> {
   const query = `
   query ($page: Int, $perPage: Int) {
