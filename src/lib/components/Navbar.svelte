@@ -11,7 +11,7 @@
   </a>
 
   <!-- Nav Buttons: Desktop -->
-  <div class="flex flex-row items-center text-secondary-text">
+  <div class="hidden md:flex flex-row items-center text-secondary-text">
     <button class="nav-button">New</button>
     <button class="nav-button">Popular</button>
     <button class="nav-button">Discover</button>
