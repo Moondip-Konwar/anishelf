@@ -13,7 +13,9 @@
     <img src={anime.coverImage.large} alt={anime.title.english} />
 
     <p class="text-primary-text font-bold">{anime.title.english}</p>
-    <p class="text-secondary-text">{anime.episodes} Episodes</p>
+    {#if anime.episodes}
+      <p class="text-secondary-text">{anime.episodes} Episodes</p>
+    {/if}
   </a>
 {/if}
 

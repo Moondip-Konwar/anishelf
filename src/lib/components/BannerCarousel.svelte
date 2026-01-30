@@ -94,12 +94,13 @@
           </p>
         {/if}
 
-        <button
+        <a
           class="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 font-semibold text-black hover:bg-gray-200 transition-colors"
+          href="/{currentAnime.id}"
         >
           <span class="material-symbols-outlined">play_arrow</span>
-          Start Watching
-        </button>
+          View Details
+        </a>
       </div>
     </div>
   </section>
