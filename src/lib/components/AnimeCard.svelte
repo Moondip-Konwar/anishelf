@@ -35,11 +35,15 @@
   }
 
   .anime-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
     z-index: 50;
   }
 
   .anime-card:hover > p {
     color: var(--color-primary);
+  }
+
+  .anime-card:hover > img {
+    border: 2px solid var(--color-primary);
   }
 </style>
