@@ -52,14 +52,16 @@
 </script>
 
 {#if banners.length}
-  <section class="relative h-screen w-full overflow-hidden bg-black">
+  <section
+    class="relative h-[70vh] md:h-screen w-full overflow-hidden bg-black"
+  >
     <div class="banner">
       {#key index}
         <img
           in:fade={{ duration: 900 }}
           src={currentAnime.bannerImage}
           alt={currentAnime.title.romaji}
-          class="banner-img"
+          class="banner-img w-full h-[40%] md:h-full"
         />
       {/key}
       <div class="banner-overlay"></div>
@@ -115,8 +117,6 @@
 
   .banner-img {
     position: absolute; /* Needed for crossfade overlap */
-    height: 100%;
-    width: 100%;
     object-fit: cover;
   }
 
