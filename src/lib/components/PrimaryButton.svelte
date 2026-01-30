@@ -3,7 +3,7 @@
 </script>
 
 <button
-  class="flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-semibold text-black"
+  class="flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-semibold text-black hover:bg-white transition-colors"
 >
   <span class="material-symbols-outlined">{symbol}</span>
   {text}
