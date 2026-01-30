@@ -3,6 +3,7 @@
   import type { Anime } from "$lib/api";
   import { fetch_anime_by_id } from "$lib/api";
   import { onMount } from "svelte";
+  import PrimaryButton from "$lib/components/PrimaryButton.svelte";
 
   let anime_id: number = Number(page.params.anime_id);
   let anime: Anime;
@@ -38,13 +39,7 @@
           {@html anime.description}
         </p>
       {/if}
-
-      <button
-        class="flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-semibold text-black"
-      >
-        <span class="material-symbols-outlined">play_arrow</span>
-        Start Watching
-      </button>
+      <PrimaryButton text="Start Watching"></PrimaryButton>
     </div>
 
     <div class="w-48 md:w-64 flex-shrink-0">
