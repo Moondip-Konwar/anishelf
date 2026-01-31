@@ -105,3 +105,54 @@ export async function fetch_trending_animes(
 
   return json.data.Page.media as Anime[];
 }
+
+export async function search_anime(
+  search: string,
+  page = 1,
+  perPage = 20,
+): Promise<Anime[]> {
+  const query = `
+  query ($page: Int, $perPage: Int, $search: String) {
+    Page(page: $page, perPage: $perPage) {
+      media(type: ANIME, search: $search, sort: SEARCH_MATCH) {
+        id
+        title {
+          english
+          romaji
+        }
+        description(asHtml: false)
+        genres
+        episodes
+        bannerImage
+        coverImage {
+          large
+        }
+        averageScore
+      }
+    }
+  }
+`;
+
+  const variables = { search, page, perPage };
+
+  const res = await fetch(anilist_url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({ query, variables }),
+  });
+
+  if (!res.ok) {
+    throw new Error(`AniList API error: ${res.status}`);
+  }
+
+  const json = await res.json();
+
+  if (json.errors) {
+    throw new Error(json.errors[0].message);
+  }
+
+  return json.data.Page.media as Anime[];
+}

@@ -10,9 +10,14 @@
 
 {#if anime}
   <a href="/{anime.id}" class="anime-card">
-    <img src={anime.coverImage.large} alt={anime.title.english} />
+    <img
+      src={anime.coverImage.large}
+      alt={anime.title.english ?? anime.title.romaji}
+    />
 
-    <p class="text-primary-text font-bold">{anime.title.english}</p>
+    <p class="text-primary-text font-bold">
+      {anime.title.english ?? anime.title.romaji}
+    </p>
     {#if anime.episodes}
       <p class="text-secondary-text">{anime.episodes} Episodes</p>
     {/if}

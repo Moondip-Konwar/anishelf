@@ -23,7 +23,9 @@
 
   <!-- Actions -->
   <div class="flex flex-row items-center text-secondary-text">
-    <span class="material-symbols-outlined nav-button">search</span>
+    <a href="/search">
+      <span class="material-symbols-outlined nav-button">search</span>
+    </a>
     <span class="material-symbols-outlined nav-button">account_circle</span>
   </div>
 </nav>
