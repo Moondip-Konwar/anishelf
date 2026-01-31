@@ -1,3 +1,7 @@
+<script>
+  import { resolve } from "$app/paths";
+</script>
+
 <nav class="h-15 w-full bg-surface flex flex-row items-center">
   <!-- Menu Button  -->
   <span class="nav-item material-symbols-outlined text-primary-text">
@@ -5,7 +9,10 @@
   </span>
 
   <!-- Title  -->
-  <a href="/" class="nav-item text-primary flex flex-row items-center gap-2">
+  <a
+    href={resolve("/")}
+    class="nav-item text-primary flex flex-row items-center gap-2"
+  >
     <span class="material-symbols-outlined"> circle_circle </span>
     <span class="text-xl font-black">Anishelf</span>
   </a>
@@ -23,7 +30,7 @@
 
   <!-- Actions -->
   <div class="flex flex-row items-center text-secondary-text">
-    <a href="/search">
+    <a href={resolve("/search")}>
       <span class="material-symbols-outlined nav-button">search</span>
     </a>
     <span class="material-symbols-outlined nav-button">account_circle</span>

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { resolve } from "$app/paths";
   import type { Anime } from "$lib/api";
 
   // Load props
@@ -9,7 +10,7 @@
 </script>
 
 {#if anime}
-  <a href="/{anime.id}" class="anime-card">
+  <a href={resolve(`/${anime.id}`)} class="anime-card">
     <img
       src={anime.coverImage.large}
       alt={anime.title.english ?? anime.title.romaji}

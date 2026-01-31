@@ -3,6 +3,7 @@
   import type { Anime } from "$lib/api";
   import { shuffleArray } from "$lib/utils";
   import { truncate } from "$lib/utils";
+  import { resolve } from "$app/paths";
 
   const BANNER_NEXT_ANIME_DELAY = 10000;
 
@@ -98,7 +99,7 @@
 
         <a
           class="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 font-semibold text-black hover:bg-white transition-colors"
-          href="/{currentAnime.id}"
+          href={resolve(`/${currentAnime.id}`)}
         >
           <span class="material-symbols-outlined">play_arrow</span>
           View Details
