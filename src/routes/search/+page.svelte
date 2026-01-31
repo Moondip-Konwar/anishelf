@@ -29,6 +29,6 @@
   />
 </div>
 
-{#if search_results}
+{#if search_results.length > 0}
   <AnimeSection title="Results" animes={search_results}></AnimeSection>
 {/if}
