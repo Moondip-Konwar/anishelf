@@ -4,6 +4,7 @@
   import { fetch_anime_by_id } from "$lib/api";
   import { onMount } from "svelte";
   import PrimaryButton from "$lib/components/PrimaryButton.svelte";
+  import Spinner from "$lib/components/Spinner.svelte";
 
   let anime_id: number = Number(page.params.anime_id);
   let anime: Anime;
@@ -50,4 +51,6 @@
       />
     </div>
   </div>
+{:else}
+  <Spinner></Spinner>
 {/if}

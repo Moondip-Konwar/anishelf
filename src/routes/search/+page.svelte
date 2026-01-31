@@ -1,6 +1,7 @@
 <script lang="ts">
   import { search_anime, type Anime } from "$lib/api";
   import AnimeSection from "$lib/components/AnimeSection.svelte";
+  import Spinner from "$lib/components/Spinner.svelte";
   import { onMount } from "svelte";
 
   let search_term = $state("");
@@ -31,4 +32,7 @@
 
 {#if search_results.length > 0}
   <AnimeSection title="Results" animes={search_results}></AnimeSection>
+{:else if search_term.length > 3}
+  <!-- else if content here -->
+  <Spinner></Spinner>
 {/if}
