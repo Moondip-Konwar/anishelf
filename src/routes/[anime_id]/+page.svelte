@@ -43,7 +43,7 @@
       <PrimaryButton text="Start Watching"></PrimaryButton>
     </div>
 
-    <div class="w-48 md:w-64 flex-shrink-0">
+    <div class="w-48 hidden md:block md:w-64 flex-shrink-0">
       <img
         src={anime.coverImage.large}
         alt={anime.title.romaji}
