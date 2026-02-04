@@ -46,7 +46,7 @@
       class="flex overflow-x-auto gap-4 scrollbar-hide scroll-smooth snap-x"
     >
       {#each animes as anime}
-        <div class="min-w-[150px] md:min-w-[200px] snap-start">
+        <div class="min-w-[150px] md:min-w-[200px] snap-start p-2">
           <AnimeCard {anime} />
         </div>
       {/each}

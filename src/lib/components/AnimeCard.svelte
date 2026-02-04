@@ -50,6 +50,12 @@
   }
 
   .anime-card:hover > img {
-    border: 2px solid var(--color-primary);
+    /* First shadow: 0 offset, 0 blur, 4px spread (matches background color)
+     Second shadow: 0 offset, 0 blur, 6px spread (the actual "border" color)
+  */
+    box-shadow: 0 0 0 2px var(--color-primary);
+
+    /* Smooth out the transition */
+    transition: box-shadow 0.3s ease;
   }
 </style>
