@@ -10,6 +10,11 @@
   --color-secondary-text: #a8a8a8;
 }
 
+html {
+  scroll-padding: 5rem;
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Google Sans";
   background-color: var(--color-background);

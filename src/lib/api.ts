@@ -57,14 +57,15 @@ export async function fetch_anime_by_id(id: number): Promise<Anime> {
   return result.data.Media;
 }
 
-export async function fetch_trending_animes(
+export async function fetch_sorted_anime(
+  sort: string,
   page = 1,
   perPage = 20,
 ): Promise<Anime[]> {
   const query = `
   query ($page: Int, $perPage: Int) {
     Page(page: $page, perPage: $perPage) {
-      media(type: ANIME, sort: TRENDING_DESC) {
+      media(type: ANIME, sort: ${sort}) {
         id
         title {
           english
